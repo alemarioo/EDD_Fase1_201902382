@@ -4,7 +4,8 @@ class MatrizDinamica{
     }
 
     agregar(dato, dia, hora){
-        this.getHora(dia)
+        const fila = this.getDia(dia);
+        const hora = this.getHora(hora);
     }
     /**
      * Funcion que retorna la fila del dia
@@ -113,9 +114,9 @@ class NodoMatriz{
     }
 }
 const x = new MatrizDinamica();
-x.agregar(0,2,0)
-x.agregar(0,3,0)
-x.agregar(0,4,0)
-x.agregar(0,7,0)
-x.agregar(0,6,0)
-x.agregar(0,1,0)
+x.agregar(0,2,1)
+x.agregar(0,3,2)
+x.agregar(0,4,3)
+x.agregar(0,7,4)
+x.agregar(0,6,5)
+x.agregar(0,1,6)
