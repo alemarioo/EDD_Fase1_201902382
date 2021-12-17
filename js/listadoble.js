@@ -17,6 +17,19 @@ class ListaDobleEnlazada{
     vacio(){
         return this.inicio === null;
     }
+
+    remove(id){
+        let aux = this.inicio;
+        while (aux) {
+            
+            if (aux.mes === id) {
+                aux.anterior.siguiente = aux.siguiente
+                aux.siguiente.anterior = aux.anterior
+            }
+
+            aux  = aux.siguiente;
+        }
+    }
 }
 
 class NodoDoble{
@@ -37,3 +50,6 @@ x.add(3);
 x.add(4);
 x.add(5);
 x.add(6);
+
+x.remove(3);
+console.log("a");
