@@ -1,4 +1,4 @@
-class ListaDobleEnlazda{
+class ListaDobleEnlazada{
     constructor(){
         this.inicio = null;
         this.final = null;
@@ -30,7 +30,7 @@ class NodoDoble{
 
 console.log("a");
 
-const x = new ListaDobleEnlazda();
+const x = new ListaDobleEnlazada();
 x.add(1);
 x.add(2);
 x.add(3);
