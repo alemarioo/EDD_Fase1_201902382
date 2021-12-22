@@ -38,6 +38,16 @@
         <div class="col-9">
             <div class="row">
                 <div class="container bg-secondary">
+                    <div class="row my-3">
+                        <div class="col d-flex justify-content-center">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" id="V" class="btn btn-success" onclick="carga('Vendedores')">Vendedores</button>
+                                <button type="button" id="P" class="btn btn-secondary" onclick="carga('Proveedores')">Proveedores</button>
+                                <button type="button" id="E" class="btn btn-secondary" onclick="carga('Eventos')">eventos</button>
+                                <button type="button" id="C" class="btn btn-secondary" onclick="carga('Clientes')">Clientes</button>
+                              </div>
+                        </div>
+                    </div>
                     <div class="row mt-3">
                         <div class="col d-flex justify-content-center">
                             <i class="fas fa-upload display-1 text-white"></i>
@@ -47,16 +57,6 @@
                         <div class="col d-flex justify-content-center">
                             <input type="file" class="form-control w-50" id="customFile" />
 
-                        </div>
-                    </div>
-                    <div class="row my-3">
-                        <div class="col d-flex justify-content-center">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success">Vendedores</button>
-                                <button type="button" class="btn btn-secondary">Proveedores</button>
-                                <button type="button" class="btn btn-secondary">eventos</button>
-                                <button type="button" class="btn btn-secondary">Clientes</button>
-                              </div>
                         </div>
                     </div>
                     <div class="div my-3">
@@ -70,6 +70,9 @@
             </div>
         </div>
     </div>
-    </script>
+    <script src="../js/AVL.js"></script>
+    <script src="./js/indexAdmin.js"></script>
+    <script src="../js/circular.js"></script>
+    <script src="../js//listadoble.js"></script>
   </body>
 </html>

@@ -1,19 +1,20 @@
 class AVL{
+    
     constructor(){
         this.raiz = null;
     }
 
-    insertar(valor){
-        let temp = new nodoAVL(valor);
+    insertar(valor, info){
+        let temp = new nodoAVL(valor, info);
         if(this.vacio()){
-            this.raiz= temp;
+            this.raiz = temp;
         }else{
             this.raiz = this.add(this.raiz,temp);
         }
     }
 
     vacio(){
-        return self.raiz == null;
+        return self.raiz === null;
     }
 
     add(raiz_actual,nuevo){
@@ -107,14 +108,37 @@ class AVL{
             this.ImprimirEnOrden(raiz_actual.der);
         }
     }
+
+    addClientesAUser(raiz_actual, id, cliente){
+        if(raiz_actual != null){
+            this.addClientesAUser(raiz_actual.izq,id, cliente);
+            
+            if (id === raiz_actual.dato) {
+                raiz_actual.info.clientes.add(cliente);
+                console.log(raiz_actual.info.clientes);
+            }
+            this.addClientesAUser(raiz_actual.der,id, cliente);
+        }
+    }
 }
 
 class nodoAVL{
-    constructor(dato){
+    constructor(dato, info){
         this.dato = dato;
+        this.info = info;
         this.izq = null;
         this.der = null;
         this.altura = 0;
     }
 }
 
+class usuario{
+    constructor() {
+        this.id;
+        this.nombre;
+        this.edad;
+        this.correo;
+        this.password;
+        this.clientes;
+    }
+}

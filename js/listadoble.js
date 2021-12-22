@@ -40,16 +40,3 @@ class NodoDoble{
         this.mes = mes;
     }
 }
-
-console.log("a");
-
-const x = new ListaDobleEnlazada();
-x.add(1);
-x.add(2);
-x.add(3);
-x.add(4);
-x.add(5);
-x.add(6);
-
-x.remove(3);
-console.log("a");
