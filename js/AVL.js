@@ -140,5 +140,6 @@ class usuario{
         this.correo;
         this.password;
         this.clientes;
+        this.calendario;
     }
 }

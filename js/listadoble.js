@@ -4,11 +4,11 @@ class ListaDobleEnlazada{
         this.final = null;
     }
 
-    add(mes){
+    add(id, info){
         if (this.vacio()) {
-            this.inicio = this.final = new NodoDoble(null, null, mes);
+            this.inicio = this.final = new NodoDoble(null, null, id, info);
         }else{
-            const nuevo = new NodoDoble(this.final, null, mes);
+            const nuevo = new NodoDoble(this.final, null, id, info);
             this.final.siguiente = nuevo;
             this.final = nuevo;
         }
@@ -21,22 +21,21 @@ class ListaDobleEnlazada{
     remove(id){
         let aux = this.inicio;
         while (aux) {
-            
-            if (aux.mes === id) {
-                aux.anterior.siguiente = aux.siguiente
-                aux.siguiente.anterior = aux.anterior
+            if (aux.id === id) {
+                aux.anterior.siguiente = aux.siguiente;
+                aux.siguiente.anterior = aux.anterior;
             }
-
             aux  = aux.siguiente;
         }
     }
 }
 
 class NodoDoble{
-    constructor(anterio, siguiente, mes){
+    constructor(anterio, siguiente, id, calendario){
         this.anterior = anterio;
         this.siguiente = siguiente;
         this.calendario = null;
-        this.mes = mes;
+        this.id = id;
+        this.calendario = calendario;
     }
 }

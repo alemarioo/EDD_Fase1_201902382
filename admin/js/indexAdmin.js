@@ -31,45 +31,63 @@ function cargarUsuarios(contenido){
         userTemp.correo = element.correo;
         userTemp.password = element.password;
         userTemp.clientes = new ListaDobleEnlazada();
-        
-        
+        userTemp.calendario = new ListaDobleEnlazada();
+
+        for (let i = 1; i <= 12; i++) {
+            userTemp.calendario.add(i, new MatrizDinamica());
+        }
         arbolAVL.insertar(element.id, userTemp);
         
     });
-    //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
+    // localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
+    
     alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
 function cargarClientes(contenido) {
-    console.log(contenido);
+    
     const JSONarchivo = JSON.parse(contenido).vendedores;
     JSONarchivo.forEach(element => {
         console.log(element.id);
         element.clientes.forEach(cliente => {
-            console.log(cliente);
-            //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);    
+            arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);    
         });
         
     });
     //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    
+    console.log(CircularJSON.stringify(arbolAVL));
     alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
-function provedores(contenido) {
-    console.log(contenido);
+function Cargaprovedores(contenido) {
+    
     const JSONarchivo = JSON.parse(contenido).proveedores;
     JSONarchivo.forEach(element => {
+        
+        console.log(element);
+        //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);    
+        
+        
+    });
+    //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
+    
+    alert("Se ha cargado correctamente " + JSONarchivo.length + " Proveedores")
+}
+
+function cargarEventos(contenido) {
+    
+    const JSONarchivo = JSON.parse(contenido).vendedores;
+    JSONarchivo.forEach(element => {
         console.log(element.id);
-        element.clientes.forEach(cliente => {
+        element.eventos.forEach(cliente => {
             console.log(cliente);
-            //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);    
+            //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);
         });
         
     });
     //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
     
-    alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
+    alert("Se ha cargado correctamente " + JSONarchivo.length + " ")
 }
 
 function getArbolAVL(){
@@ -94,6 +112,12 @@ function carga(tipo){
         case "Clientes":
             funcionCarga = cargarClientes
             console.log("asdadsa");
+            break;
+        case "Proveedores":
+            funcionCarga = Cargaprovedores
+            break;
+        case "Eventos":
+            funcionCarga = cargarEventos
             break;
     }
 }
