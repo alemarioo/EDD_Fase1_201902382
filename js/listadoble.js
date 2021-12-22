@@ -40,13 +40,33 @@ class ListaDobleEnlazada{
             aux  = aux.siguiente;
         }
     }
+
+    generarDot(){
+        let aux = this.inicio;
+        let relacionales = "";
+        let template = `
+        digraph Sparce_Matrix {
+            rankdir=LR
+            node [shape=box];
+            edge [dir="both"];
+        `
+
+        while (aux) {
+            template+=`N${aux.id}[label = "Nombre: ${aux.calendario.nombre} Correo: ${aux.calendario.correo} " width = 1.5, group = 1 ];\n`
+            if (aux.siguiente) {
+                relacionales+=`N${aux.id} -> N${aux.siguiente.id}`
+            }
+            aux  = aux.siguiente;
+        }
+        template+= "\n\n" + relacionales + "\n }"
+        return template
+    }
 }
 
 class NodoDoble{
     constructor(anterio, siguiente, id, calendario){
         this.anterior = anterio;
         this.siguiente = siguiente;
-        this.calendario = null;
         this.id = id;
         this.calendario = calendario;
     }
