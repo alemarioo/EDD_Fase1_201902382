@@ -18,6 +18,18 @@ class ListaDobleEnlazada{
         return this.inicio === null;
     }
 
+    addElementCalendar(mes, evento){
+        let aux = this.inicio;
+        while (aux) {
+            if (aux.id === mes) {
+                console.log(aux.calendario);
+                aux.calendario.agregar(evento, evento.dia, evento.hora);
+                console.log(aux.calendario);
+            }
+            aux  = aux.siguiente;
+        }
+    }
+
     remove(id){
         let aux = this.inicio;
         while (aux) {

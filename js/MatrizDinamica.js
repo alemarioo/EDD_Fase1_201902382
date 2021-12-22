@@ -8,7 +8,7 @@ class MatrizDinamica {
     agregar(dato, dia, hora) {
         this.getDia(dia);
         this.getHora(hora);
-
+        console.log(dia + "," + hora);
         let aux = this.HoraAux;
 
         while (aux) {
@@ -21,7 +21,7 @@ class MatrizDinamica {
             }
 
             if (actual.dia > dia) {
-                const nuevo = new NododATO(hora, dia, null, this.HoraAux, aux, null)
+                const nuevo = new NododATO(hora, dia, null, aux, null, aux.derecho)
                 actual.izquie.derecho = nuevo
                 actual.izquie = nuevo
                 aux = nuevo
@@ -31,7 +31,7 @@ class MatrizDinamica {
         }
 
         let axuFila = this.DiaAux
-
+        
         while (axuFila) {
             let actual = axuFila.abajo
             if (!actual) {
@@ -129,7 +129,9 @@ class MatrizDinamica {
                 return nuevo;
             }
 
-            if (aux?.dato === hora) { return aux }
+            if (aux?.dato === hora) { 
+                this.HoraAux = aux
+                return aux }
             if (!aux) {
 
                 const nuevo = new NodoMatriz(hora, anterior, null, anterior.abajo, null);
@@ -167,6 +169,30 @@ class MatrizDinamica {
         }
         return cadena
     }
+
+    GenerarDot() {
+        let aux = this.inicio;
+        let auxcolum = aux.derecho
+        let cadena = "";
+        while (aux) {
+
+            while (auxcolum) {
+
+                if (auxcolum.dato) {
+                    cadena += auxcolum.dato + " ->";
+                } else {
+                    cadena += auxcolum.dia + "," + auxcolum.hora + " ->";
+                }
+
+                auxcolum = auxcolum.derecho
+            }
+            cadena += "\n";
+            aux = aux.abajo;
+            auxcolum = aux?.derecho;
+        }
+        return cadena
+    }
+
 }
 
 
@@ -212,4 +238,19 @@ class NododATO {
 }
 
 
-var CircularJSON = function (JSON, RegExp) { var specialChar = "~", safeSpecialChar = "\\x" + ("0" + specialChar.charCodeAt(0).toString(16)).slice(-2), escapedSafeSpecialChar = "\\" + safeSpecialChar, specialCharRG = new RegExp(safeSpecialChar, "g"), safeSpecialCharRG = new RegExp(escapedSafeSpecialChar, "g"), safeStartWithSpecialCharRG = new RegExp("(?:^|([^\\\\]))" + escapedSafeSpecialChar), indexOf = [].indexOf || function (v) { for (var i = this.length; i-- && this[i] !== v;); return i }, $String = String; function generateReplacer(value, replacer, resolve) { var doNotIgnore = false, inspect = !!replacer, path = [], all = [value], seen = [value], mapp = [resolve ? specialChar : "[Circular]"], last = value, lvl = 1, i, fn; if (inspect) { fn = typeof replacer === "object" ? function (key, value) { return key !== "" && replacer.indexOf(key) < 0 ? void 0 : value } : replacer } return function (key, value) { if (inspect) value = fn.call(this, key, value); if (doNotIgnore) { if (last !== this) { i = lvl - indexOf.call(all, this) - 1; lvl -= i; all.splice(lvl, all.length); path.splice(lvl - 1, path.length); last = this } if (typeof value === "object" && value) { if (indexOf.call(all, value) < 0) { all.push(last = value) } lvl = all.length; i = indexOf.call(seen, value); if (i < 0) { i = seen.push(value) - 1; if (resolve) { path.push(("" + key).replace(specialCharRG, safeSpecialChar)); mapp[i] = specialChar + path.join(specialChar) } else { mapp[i] = mapp[0] } } else { value = mapp[i] } } else { if (typeof value === "string" && resolve) { value = value.replace(safeSpecialChar, escapedSafeSpecialChar).replace(specialChar, safeSpecialChar) } } } else { doNotIgnore = true } return value } } function retrieveFromPath(current, keys) { for (var i = 0, length = keys.length; i < length; current = current[keys[i++].replace(safeSpecialCharRG, specialChar)]); return current } function generateReviver(reviver) { return function (key, value) { var isString = typeof value === "string"; if (isString && value.charAt(0) === specialChar) { return new $String(value.slice(1)) } if (key === "") value = regenerate(value, value, {}); if (isString) value = value.replace(safeStartWithSpecialCharRG, "$1" + specialChar).replace(escapedSafeSpecialChar, safeSpecialChar); return reviver ? reviver.call(this, key, value) : value } } function regenerateArray(root, current, retrieve) { for (var i = 0, length = current.length; i < length; i++) { current[i] = regenerate(root, current[i], retrieve) } return current } function regenerateObject(root, current, retrieve) { for (var key in current) { if (current.hasOwnProperty(key)) { current[key] = regenerate(root, current[key], retrieve) } } return current } function regenerate(root, current, retrieve) { return current instanceof Array ? regenerateArray(root, current, retrieve) : current instanceof $String ? current.length ? retrieve.hasOwnProperty(current) ? retrieve[current] : retrieve[current] = retrieveFromPath(root, current.split(specialChar)) : root : current instanceof Object ? regenerateObject(root, current, retrieve) : current } var CircularJSON = { stringify: function stringify(value, replacer, space, doNotResolve) { return CircularJSON.parser.stringify(value, generateReplacer(value, replacer, !doNotResolve), space) }, parse: function parse(text, reviver) { return CircularJSON.parser.parse(text, generateReviver(reviver)) }, parser: JSON }; return CircularJSON }(JSON, RegExp);
+const x  = new MatrizDinamica();
+x.agregar(0,3,3);
+x.agregar(0,3,3);
+x.agregar(0,3,1);
+console.log(x.toString());
+x.agregar(0,2,1);
+console.log(x.toString());
+x.agregar(0,2,2);
+console.log(x.toString());
+x.agregar(0,2,4);
+console.log(x.toString());
+x.agregar(0,2,3);
+
+
+console.log(x.toString());
+

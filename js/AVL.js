@@ -120,6 +120,17 @@ class AVL{
             this.addClientesAUser(raiz_actual.der,id, cliente);
         }
     }
+
+    addEventoAUser(raiz_actual, id, event){
+        if(raiz_actual != null){
+            this.addEventoAUser(raiz_actual.izq, id, event);
+            
+            if (id === raiz_actual.dato) {
+                raiz_actual.info.calendario.addElementCalendar(event.mes, event);
+            }
+            this.addEventoAUser(raiz_actual.der,id,event);
+        }
+    }
 }
 
 class nodoAVL{

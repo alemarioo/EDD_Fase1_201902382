@@ -41,7 +41,7 @@ function cargarUsuarios(contenido){
     });
     // localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
     
-    alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
+    //alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
 function cargarClientes(contenido) {
@@ -79,15 +79,15 @@ function cargarEventos(contenido) {
     const JSONarchivo = JSON.parse(contenido).vendedores;
     JSONarchivo.forEach(element => {
         console.log(element.id);
-        element.eventos.forEach(cliente => {
-            console.log(cliente);
-            //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);
+        element.eventos.forEach(evento=> {
+            console.log(evento);
+            arbolAVL.addEventoAUser(arbolAVL.raiz, element.id, evento);
         });
         
     });
     //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    
-    alert("Se ha cargado correctamente " + JSONarchivo.length + " ")
+    console.log(CircularJSON.stringify(arbolAVL));
+    //alert("Se ha cargado correctamente " + JSONarchivo.length + " ")
 }
 
 function getArbolAVL(){
@@ -98,7 +98,9 @@ function getArbolAVL(){
     }
     return temp;
 }
+
 funcionCarga = this.cargarUsuarios
+
 function carga(tipo){
     document.getElementById("V").className = tipo === "Vendedores"? "btn btn-success": "btn btn-secondary";
     document.getElementById("P").className = tipo === "Proveedores"? "btn btn-success": "btn btn-secondary";
