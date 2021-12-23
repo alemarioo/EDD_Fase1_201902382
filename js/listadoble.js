@@ -43,6 +43,7 @@ class ListaDobleEnlazada{
         let aux = this.inicio;
         while (aux) {
             if (aux.id === id) {
+                console.log("--------------");
                 return aux.calendario.generarGojs();
             }
             aux  = aux.siguiente;

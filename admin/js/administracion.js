@@ -103,7 +103,7 @@ function generarEventos() {
         alert("El numero debe ser valido");
         return
     }
-    const mes = document.getElementById("Mes_selected").value
+    const mes = +document.getElementById("Mes_selected").value
     
     const res = arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, Iduser, mes);
     console.log(res);
