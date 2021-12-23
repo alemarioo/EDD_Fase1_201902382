@@ -228,6 +228,45 @@ class MatrizDinamica {
         }
         return elementos+"\n\n" + relacionales + "\n\n" + fila;
     }
+
+    generarGojs(){
+        console.log(this.GenerarDot());
+        let aux = this.inicio;
+        let elementos = [];
+        let relacionales = [];
+
+        while (aux) {
+            let auxColumn = aux;
+            
+            while (auxColumn) {
+                const nodoNombre = {}
+                nodoNombre.key = "H" + auxColumn.hora + "D" + auxColumn.dia
+                nodoNombre.text = auxColumn.info
+                elementos.push(nodoNombre)
+
+                if (auxColumn.izquie) {
+                    const nodoAnterior = "H" + auxColumn.izquie.hora + "D" + auxColumn.izquie.dia
+                    relacionales.push({
+                        from: nodoNombre.key,
+                        to: nodoAnterior
+                    })
+                }
+
+                if (auxColumn.arriba) {
+                    const nodoAnterior = "H" + auxColumn.arriba.hora + "D" + auxColumn.arriba.dia
+                    relacionales.push({
+                        from: nodoNombre.key,
+                        to: nodoAnterior
+                    })
+                }
+                
+                auxColumn = auxColumn.derecho;
+            }
+            
+            aux = aux.abajo
+        }
+        return {elementos, relacionales};
+    }
 }
 
 

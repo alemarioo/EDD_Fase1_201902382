@@ -33,6 +33,71 @@ function generarVendedores() {
     ); 
 }
 
+function generarClientes() {
+    // define a simple Node template
+        myDiagram.nodeTemplate =
+        $(go.Node, "Horizontal",
+            { background: "#A3DA8D" },
+            $(go.TextBlock, "Default Text",
+            { margin: 12, stroke: "white", font: "century-gothic 16px" },
+            new go.Binding("text", "text"))
+        );
+
+        myDiagram.linkTemplate =
+        $(go.Link,
+            $(go.Shape),
+            $(go.Shape,   // the "from" end arrowhead
+            { fromArrow: "Backward" }),
+            $(go.Shape,   // the "to" end arrowhead
+            { toArrow: "Standard"})
+        );
+        const Iduser = +document.getElementById("input_id").value;
+        if (!Iduser) {
+            alert("El numero debe ser valido");
+            return
+        }
+        console.log(Iduser);
+        const res = arbolAVL.GetDotFromClient(arbolAVL.raiz,Iduser);
+        
+        myDiagram.model = new go.GraphLinksModel(
+            res.template,
+            res.relacionales
+        ); 
+}
+
+function generarEventos() {
+    // define a simple Node template
+    myDiagram.nodeTemplate =
+    $(go.Node, "Horizontal",
+        { background: "#A3DA8D" },
+        $(go.TextBlock, "Default Text",
+        { margin: 12, stroke: "white", font: "century-gothic 16px" },
+        new go.Binding("text", "text"))
+    );
+
+    myDiagram.linkTemplate =
+    $(go.Link,
+        $(go.Shape),
+        $(go.Shape,   // the "from" end arrowhead
+        { fromArrow: "Backward" }),
+        $(go.Shape,   // the "to" end arrowhead
+        { toArrow: "Standard"})
+    );
+    const Iduser = +document.getElementById("input_id").value;
+    if (!Iduser) {
+        alert("El numero debe ser valido");
+        return
+    }
+    const mes = document.getElementById("Mes_selected").value
+    
+    const res = arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, 1, 1);
+    console.log(res);
+    myDiagram.model = new go.GraphLinksModel(
+        res.elementos,
+        res.relacionales
+    ); 
+}
+
 
 function MostrarContendorCrear() {
     contenedorEliminar.style = "display:none;";

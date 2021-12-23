@@ -43,32 +43,56 @@ class ListaDobleEnlazada{
         let aux = this.inicio;
         while (aux) {
             if (aux.id === id) {
-                return aux.calendario.GenerarDot();
+                return aux.calendario.generarGojs();
             }
             aux  = aux.siguiente;
         }
     }
 
+    // generarDot(){
+    //     let aux = this.inicio;
+    //     let relacionales = "";
+    //     let template = `
+    //     digraph Sparce_Matrix {
+    //         rankdir=LR
+    //         node [shape=box];
+    //         edge [dir="both"];
+    //     `
+
+    //     while (aux) {
+    //         console.log(aux.calendario);
+    //         template+=`N${aux.id}[label = "Nombre: ${aux.calendario.nombre} Correo: ${aux.calendario.correo} " width = 1.5, group = 1 ];\n`
+    //         if (aux.siguiente) {
+    //             relacionales+=`N${aux.id} -> N${aux.siguiente.id}\n`
+    //         }
+    //         aux  = aux.siguiente;
+    //     }
+    //     template+= "\n\n" + relacionales + "\n }"
+    //     return template
+    // }
+
     generarDot(){
         let aux = this.inicio;
-        let relacionales = "";
-        let template = `
-        digraph Sparce_Matrix {
-            rankdir=LR
-            node [shape=box];
-            edge [dir="both"];
-        `
+        let relacionales = [];
+        let template = []
 
         while (aux) {
             console.log(aux.calendario);
-            template+=`N${aux.id}[label = "Nombre: ${aux.calendario.nombre} Correo: ${aux.calendario.correo} " width = 1.5, group = 1 ];\n`
             if (aux.siguiente) {
-                relacionales+=`N${aux.id} -> N${aux.siguiente.id}\n`
+                const obj = {}
+                obj.key = aux.id
+                obj.text = `Nombre: ${aux.calendario.nombre} Correo: ${aux.calendario.correo}`
+                template.push(obj);
+                if (aux.siguiente) {
+                    relacionales.push({
+                        from: aux.id,
+                        to: aux.siguiente.id
+                    });
+                }
             }
             aux  = aux.siguiente;
         }
-        template+= "\n\n" + relacionales + "\n }"
-        return template
+        return {template, relacionales}
     }
 }
 

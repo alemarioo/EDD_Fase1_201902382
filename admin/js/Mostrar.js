@@ -15,4 +15,24 @@ function ResetBotones() {
 function ResetPaneles() {
     document.getElementById("PanelIndex").style = "display: none;";
     document.getElementById("PanelAdminCuentas").style = "display:none;";
+    document.getElementById("PanelReportes").style = "display:none;";
 }
+
+
+/**         MODULO DE REPORTES               */
+
+let funcionARealizar = generarClientes
+function MostrarMesUser(){
+    document.getElementById("text_User").style = "";
+    document.getElementById("btn_graficar").style = "";
+    document.getElementById("text_Mes").style = "";
+    funcionARealizar = generarEventos 
+}
+
+function MostrarClienteUser() {
+    document.getElementById("text_User").style = "";
+    document.getElementById("btn_graficar").style = "";
+    document.getElementById("text_Mes").style = "display:none;";
+    funcionARealizar = generarClientes
+}
+

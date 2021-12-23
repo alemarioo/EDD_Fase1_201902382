@@ -228,14 +228,46 @@
                     <div class="row my-3">
                         <div class="col d-flex justify-content-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success" onclick="generarVendedores()">Vendedores</button>
-                                <button type="button" class="btn btn-secondary" id="dotProveedores">Proveedores</button>
-                                <button type="button" class="btn btn-secondary">eventos</button>
-                                <button type="button" class="btn btn-secondary">Clientes</button>
+                                <button type="button" class="btn btn-secondary" onclick="generarVendedores()">Vendedores</button>
+                                <button type="button" class="btn btn-secondary" onclick="generarClientes()">Proveedores</button>
+                                <button type="button" class="btn btn-secondary" onclick="MostrarMesUser()">eventos</button>
+                                <button type="button" class="btn btn-secondary" onclick="MostrarClienteUser()">Clientes</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-4" id="text_User" style="display:none;">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Id de usuario</label>
+                            <input type="email" class="form-control" id="input_id" placeholder="ej: 1">
+                        </div>
+                    </div>
+                    <div class="col-4" id="text_Mes" style="display:none;">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mes</label>
+                            <select class="form-select" id="Mes_selected">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="3">Diciembre</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="col-4" id="btn_graficar" style="display:none;">
+                        <br>
+                        <button class="btn btn-success" onclick="funcionARealizar()">Graficar</button>
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div id="myDiagramDiv"
      style=" height:500px; background-color: #DAE4E4;"></div>
