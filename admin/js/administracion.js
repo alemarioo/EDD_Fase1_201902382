@@ -29,7 +29,7 @@ function generarVendedores() {
     );
 
     myDiagram.model = new go.TreeModel(
-        arbolAVL.generarDot()
+        arbolAVL.generarTreeGojs()
     ); 
 }
 
