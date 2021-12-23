@@ -23,16 +23,16 @@
                 </div>
             </div>
             <div class="row mt-1">
-                <a href="./index.html" class="btn btn-primary btn-lg active" role="button"><i class="fas fa-upload"></i> Cargar archivos</a>
+                <button id="btn_carga" class="btn btn-primary btn-lg active" onclick="Panel(this, 'PanelIndex')"><i class="fas fa-upload"></i> Cargar archivos</button>
             </div>
             <div class="row mt-1">
-                <a href="./reportes.html" class="btn btn-white btn-lg" role="button"><i class="fas fa-chart-bar"></i> Modulo de reportes</a>
+                <button id="btn_reportes" class="btn btn-white btn-lg" onclick="Panel(this, 'PanelReportes')" ><i class="fas fa-chart-bar"></i> Modulo de reportes</button>
             </div>
             <div class="row mt-1">
-                <a href="./administracion.html" class="btn btn-white btn-lg" role="button"><i class="fas fa-users"></i> Administracion de cuentas</a>
+                <button id="btn_admin" class="btn btn-white btn-lg" onclick="Panel(this, 'PanelAdminCuentas')"><i class="fas fa-users"></i> Administracion de cuentas</button>
             </div>
             <div class="row mt-5">
-                <a href="../index.html" class="btn btn-white btn-lg" role="button"><i class="fas fa-sign-out-alt"></i> Cerra sesion</a>
+                <a href="../index.html" class="btn btn-white btn-lg" ><i class="fas fa-sign-out-alt"></i> Cerra sesion</a>
             </div>
         </div>
         <div class="col-9">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="PanelAdminCuentas">
+            <div class="row" id="PanelAdminCuentas" style = "display: none;">
                 <div class="row mx-2">
                     <div class="col text-center bg my-3">
                         <h1>Administracion de cuentas</h1> <br>
