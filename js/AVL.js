@@ -159,41 +159,27 @@ class AVL{
     }
 
     generarDot(){
-        let cadena="digraph arbol {\n";
-        cadena+= this.generar_nodos(this.raiz);
-        cadena+="\n";
-        cadena+=this.enlazar(this.raiz);
-        cadena+="\n}";
-
-        console.log(cadena);
+        let cadena=[];
+        const x = this.generar_nodos(this.raiz, null);
+        return x
     }
 
-    generar_nodos(raiz_actual){ //metodo preorden
-        let nodos ="";
+    generar_nodos(raiz_actual, arriba){ //metodo preorden
+        let todo = []
+        let nodos ={};
         if(raiz_actual != null){
-            nodos+= "n"+raiz_actual.dato+"[label=\""+raiz_actual.dato+"\"]\n";
-            nodos+=this.generar_nodos(raiz_actual.izq);
-            nodos+=this.generar_nodos(raiz_actual.der);
-        }
-        return nodos;
-    }
-
-    enlazar(raiz_actual){
-        let cadena="";
-        if(raiz_actual != null){
-            cadena += this.enlazar(raiz_actual.izq);
-            cadena += this.enlazar(raiz_actual.der);
-            //validaciones
-            if(raiz_actual.izq != null){
-                cadena+="n"+raiz_actual.dato + "-> n"+raiz_actual.izq.dato+"\n";
+            nodos.key = raiz_actual.dato;
+            nodos.name = "id: "+raiz_actual.dato + "\nnombre: " + raiz_actual.info.nombre + "\nCorreo:" +raiz_actual.info.correo;
+            if (arriba) {
+                nodos.parent = arriba;    
             }
-            if(raiz_actual.der != null){
-                cadena+="n"+raiz_actual.dato + "-> n"+raiz_actual.der.dato+"\n";
-            }
-
             
+            
+            todo.push(nodos);
+            todo = todo.concat(this.generar_nodos(raiz_actual.izq, raiz_actual.dato));
+            todo = todo.concat(this.generar_nodos(raiz_actual.der, raiz_actual.dato));
         }
-        return cadena;
+        return todo;
     }
 }
 

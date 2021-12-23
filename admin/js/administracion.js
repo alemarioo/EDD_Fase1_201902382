@@ -1,3 +1,13 @@
+window.addEventListener('load', () => {
+    $ = go.GraphObject.make;
+    myDiagram =  $(go.Diagram, "myDiagramDiv",
+    {
+      "undoManager.isEnabled": true,
+      layout: $(go.TreeLayout, // specify a Diagram.layout that arranges trees
+                { angle: 90, layerSpacing: 35 })
+    });
+});
+
 let contenedorCrear = document.getElementById("contenedor_crear");
 let contenedorEliminar = document.getElementById("contendor_eliminar");
 
@@ -5,18 +15,24 @@ let contenedorEliminar = document.getElementById("contendor_eliminar");
 let triggerCrear = document.getElementById("triggerCrear");
 let triggerEliminar = document.getElementById("triggerEliminar");
 
-var $ = go.GraphObject.make;
+var $ = null;
+var myDiagram = null; 
 
-var myDiagram =
-  $(go.Diagram, "myDiagramDiv");
+function generarVendedores() {
+// define a simple Node template
+    myDiagram.nodeTemplate =
+    $(go.Node, "Horizontal",
+        { background: "#A3DA8D" },
+        $(go.TextBlock, "Default Text",
+        { margin: 12, stroke: "white", font: "century-gothic 16px" },
+        new go.Binding("text", "name"))
+    );
 
+    myDiagram.model = new go.TreeModel(
+        arbolAVL.generarDot()
+    ); 
+}
 
-  myDiagram.model = new go.Model(
-    [ // for each object in this Array, the Diagram creates a Node to represent it
-      { key: "Alpha" },
-      { key: "Beta" },
-      { key: "Gamma" }
-    ]);
 
 function MostrarContendorCrear() {
     contenedorEliminar.style = "display:none;";
