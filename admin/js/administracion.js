@@ -33,6 +33,21 @@ function generarVendedores() {
     ); 
 }
 
+function generarProveedores() {
+    // define a simple Node template
+        myDiagram.nodeTemplate =
+        $(go.Node, "Horizontal",
+            { background: "#A3DA8D" },
+            $(go.TextBlock, "Default Text",
+            { margin: 12, stroke: "white", font: "century-gothic 16px" },
+            new go.Binding("text", "name"))
+        );
+    
+        myDiagram.model = new go.TreeModel(
+            Proveedores.generarTreeGojs()
+        ); 
+    }
+
 function generarClientes() {
     // define a simple Node template
         myDiagram.nodeTemplate =
@@ -88,7 +103,7 @@ function generarEventos() {
         alert("El numero debe ser valido");
         return
     }
-    const mes = document.getElementById("Mes_selected").value
+    const mes = +document.getElementById("Mes_selected").value
     
     const res = arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, Iduser, mes);
     console.log(res);

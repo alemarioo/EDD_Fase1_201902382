@@ -125,7 +125,6 @@ class AVL{
             
             if (id === raiz_actual.dato) {
                 raiz_actual.info.clientes.add(cliente.id, cliente);
-                console.log(raiz_actual.info.clientes);
             }
             this.addClientesAUser(raiz_actual.der,id, cliente);
         }
@@ -166,7 +165,7 @@ class AVL{
                 return raiz_actual.info.calendario.getDotFromCalendar(mes);
                 
             }
-            res = this.GetDotFromClient(raiz_actual.der,id, mes);
+            res = this.GetDotCalendarFromMonth(raiz_actual.der,id, mes);
             return res
         }
     }
