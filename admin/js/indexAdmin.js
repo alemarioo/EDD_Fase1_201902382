@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     document.getElementById('customFile').addEventListener('change', abrirArchivo);
 });
 let arbolAVL =  new AVL();
+let Proveedores = new ABB();
 
 function abrirArchivo(evento){
     let archivo = evento.target.files[0];
@@ -62,12 +63,12 @@ function Cargaprovedores(contenido) {
     const JSONarchivo = JSON.parse(contenido).proveedores;
     JSONarchivo.forEach(element => {
         
-        console.log(element);
-        //arbolAVL.addClientesAUser(arbolAVL.raiz, element.id, cliente);    
+        
+        Proveedores.addInfo(element.id, element);
         
         
     });
-    
+    console.log(Proveedores);
     alert("Se ha cargado correctamente " + JSONarchivo.length + " Proveedores")
 }
 
@@ -75,9 +76,7 @@ function cargarEventos(contenido) {
     
     const JSONarchivo = JSON.parse(contenido).vendedores;
     JSONarchivo.forEach(element => {
-        console.log(element.id);
         element.eventos.forEach(evento=> {
-            console.log(evento);
             arbolAVL.addEventoAUser(arbolAVL.raiz, element.id, evento);
         });
         

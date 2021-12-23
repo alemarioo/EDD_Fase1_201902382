@@ -3,8 +3,8 @@ class ABB{
         this.raiz = null;
     }
 
-    insertar(valor){
-        let nuevo = new nodo(valor);
+    addInfo(valor, info){
+        let nuevo = new nodoABB(valor, info);
 
         if(this.vacio()){
             this.raiz= nuevo;
@@ -40,6 +40,30 @@ class ABB{
             console.log(actual.id);
             this.inOrden(actual.derecho);
         }
+    }
+
+    generarTreeGojs(){
+        const x = this.generarHojas(this.raiz, null);
+        return x
+    }
+
+    //* Genera las hojas para la visualizacion del arbol AVL
+    generarHojas(raiz_actual, arriba){ //metodo preorden
+        let todo = []
+        let nodos ={};
+        if(raiz_actual != null){
+            nodos.key = raiz_actual.id;
+            nodos.name = "id: "+raiz_actual.id + "\nnombre: " + raiz_actual.info.nombre + "\nCorreo:" +raiz_actual.info.correo+"\ntelofono:"+ raiz_actual.info.telefono+"\nDireccion:" + raiz_actual.info.direccion;
+            if (arriba) {
+                nodos.parent = arriba;    
+            }
+            
+            
+            todo.push(nodos);
+            todo = todo.concat(this.generarHojas(raiz_actual.izq, raiz_actual.id));
+            todo = todo.concat(this.generarHojas(raiz_actual.der, raiz_actual.id));
+        }
+        return todo;
     }
 
 }
