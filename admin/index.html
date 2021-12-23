@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-9">
-            <div class="row">
+            <div class="row" id="PanelIndex">
                 <div class="container bg-secondary">
                     <div class="row my-3">
                         <div class="col d-flex justify-content-center">
@@ -61,6 +61,154 @@
                     </div>
                 </div>
             </div>
+            <div class="row" id="PanelAdminCuentas">
+                <div class="row mx-2">
+                    <div class="col text-center bg my-3">
+                        <h1>Administracion de cuentas</h1> <br>
+                        <div class="col d-flex justify-content-center">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary" id="triggerCrear"
+                                    onclick="MostrarContendorCrear()">Crear</button>
+                                <button type="button" class="btn btn-danger" id="triggerEliminar"
+                                    onclick="MostrarContendorEliminar()">Eliminar</button>
+                            </div>
+                        </div> <br>
+                        <div class="col d-flex justify-content-center">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-success" id="triggerUsuario"
+                                    onclick="MostrarContendorUsuario()">Usuario</button>
+                                <button type="button" class="btn btn-secondary" id="triggerProveedor"
+                                    onclick="MostrarContendorProveedor()">Proveedor</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="contenedor_crear">
+                    <div id="cont_user">
+                        <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6 text-center">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Correo</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="ej: alemario@alemario.com"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Edad</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="ej: 5" aria-label="Username"
+                                            aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Usuario</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="ej: Alemario"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-key my-1"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="Contraseña"
+                                            aria-label="password" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="text-center py-3">
+                                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                    </div>
+                    <div id="cont_prove" style="display:none;">
+                        <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6 text-center">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nombre</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="ej: Mario Alexander"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Direccion</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="ej: Zona 5 UwU"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Telefono</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-space-shuttle my-1"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="ej: 1234578"
+                                            aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Correo</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white" id="basic-addon1"><i
+                                                    class="fas fa-key my-1"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="Correo"
+                                            aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="text-center py-3">
+                                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div id="contendor_eliminar" style="display:none;">
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col text-center">
+                            <ol class="list-group list-group-numbered" id="lista">
+                                
+                              </ol>
+                        </div>
+                        <div class="col-lg-3"></div>
+    
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="../js/AVL.js"></script>
@@ -68,5 +216,7 @@
     <script src="../js/circular.js"></script>
     <script src="../js//listadoble.js"></script>
     <script src="../js/MatrizDinamica.js"></script>
+    <script src="./js/administracion.js"></script>
+    <script src="./js/Mostrar.js"></script>
   </body>
 </html>
