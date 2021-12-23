@@ -4,7 +4,7 @@ let password = document.getElementById("password");
 
 button.addEventListener("click", ()=>{
     if (NombreUser.value === "Admin" && password.value === "1234") {
-        window.location.replace("admin/administracion.html");
+        window.location.replace("admin/index.html");
     }else{
         window.location.replace("user/index.js");
     }
