@@ -68,7 +68,6 @@ function Cargaprovedores(contenido) {
         
         
     });
-    console.log(Proveedores);
     alert("Se ha cargado correctamente " + JSONarchivo.length + " Proveedores")
 }
 

@@ -60,8 +60,8 @@ class ABB{
             
             
             todo.push(nodos);
-            todo = todo.concat(this.generarHojas(raiz_actual.izq, raiz_actual.id));
-            todo = todo.concat(this.generarHojas(raiz_actual.der, raiz_actual.id));
+            todo = todo.concat(this.generarHojas(raiz_actual.izquierdo, raiz_actual.id));
+            todo = todo.concat(this.generarHojas(raiz_actual.derecho, raiz_actual.id));
         }
         return todo;
     }
