@@ -5,6 +5,19 @@ let contenedorEliminar = document.getElementById("contendor_eliminar");
 let triggerCrear = document.getElementById("triggerCrear");
 let triggerEliminar = document.getElementById("triggerEliminar");
 
+var $ = go.GraphObject.make;
+
+var myDiagram =
+  $(go.Diagram, "myDiagramDiv");
+
+
+  myDiagram.model = new go.Model(
+    [ // for each object in this Array, the Diagram creates a Node to represent it
+      { key: "Alpha" },
+      { key: "Beta" },
+      { key: "Gamma" }
+    ]);
+
 function MostrarContendorCrear() {
     contenedorEliminar.style = "display:none;";
     contenedorCrear.style = "";
@@ -19,7 +32,7 @@ function MostrarContendorEliminar() {
     contenedorCrear.style = "display:none;";
     triggerCrear.className  = "btn btn-secondary";
     triggerEliminar.className  = "btn btn-danger";
-    CargarDatos();
+    middleWareCargar();
 }
 
 //** PARA MOSTRAR FORMULARIO DIFERENTE */
@@ -37,7 +50,6 @@ function MostrarContendorUsuario() {
     
     triggerUsuario.className  = "btn btn-success";
     triggerProveedor.className  = "btn btn-secondary";
-    console.log(triggerCrear);
 }
 
 function MostrarContendorProveedor() {
@@ -49,30 +61,43 @@ function MostrarContendorProveedor() {
 
 
 
+let lista = document.getElementById("lista");
 
-function CargarDatos() {
-    let lista = document.getElementById("lista");
-    for (let i = 0; i < 10; i++) {
-        const li = document.createElement("li");
-        li.className = "list-group-item d-flex justify-content-between align-items-start";
-        const div = document.createElement("div");
-        div.className = "ms-2 me-auto";
-        const divNegrita = document.createElement("div");
-        divNegrita.className = "fw-bold";
-        div.appendChild(divNegrita);
-        const textNode = document.createTextNode("asdasdasdasdasd");
-        const cerrar = document.createElement("span");
-        cerrar.dataset = "adad";
-        cerrar.className = "badge bg-primary rounded-pill"
-        cerrar.textContent = "X";
-        cerrar.onclick = function a() {
-            //** FUNCION ELIMINAR AQUI */
-            console.log("xxx");
-        }
-        divNegrita.textContent = "TEXTO DE PRUEBA";
-        div.appendChild(textNode);
-        li.appendChild(div);
-        lista.appendChild(li);
-        li.appendChild(cerrar);
+function middleWareCargar() {
+    lista.innerHTML = "";
+    CargarDatosUsuarios(arbolAVL.raiz);
+}
+
+function CargarDatosUsuarios(raiz) {
+
+    if (!raiz) {
+        return
     }
+
+    CargarDatosUsuarios(raiz.izq);
+    
+    
+    const li = document.createElement("li");
+    li.className = "list-group-item d-flex justify-content-between align-items-start";
+    const div = document.createElement("div");
+    div.className = "ms-2 me-auto";
+    const divNegrita = document.createElement("div");
+    divNegrita.className = "fw-bold";
+    div.appendChild(divNegrita);
+    const textNode = document.createTextNode(raiz.info.correo);
+    const cerrar = document.createElement("span");
+    cerrar.dataset = "adad";
+    cerrar.className = "badge bg-primary rounded-pill"
+    cerrar.textContent = "X";
+    cerrar.onclick = function a() {
+        //** FUNCION ELIMINAR AQUI */
+        console.log("xxx");
+    }
+    divNegrita.textContent = raiz.info.nombre;
+    div.appendChild(textNode);
+    li.appendChild(div);
+    lista.appendChild(li);
+    li.appendChild(cerrar);
+
+    CargarDatosUsuarios(raiz.der);
 }

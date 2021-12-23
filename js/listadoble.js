@@ -22,7 +22,6 @@ class ListaDobleEnlazada{
         let aux = this.inicio;
         while (aux) {
             if (aux.id === mes) {
-                console.log(evento);
                 aux.calendario.agregar(evento, evento.dia, evento.hora);
             }
             aux  = aux.siguiente;

@@ -1,8 +1,8 @@
 
 window.addEventListener('load', () => {
     document.getElementById('customFile').addEventListener('change', abrirArchivo);
-    arbolAVL = new AVL(); //this.getArbolAVL();
 });
+let arbolAVL =  new AVL();
 
 function abrirArchivo(evento){
     let archivo = evento.target.files[0];
@@ -12,7 +12,7 @@ function abrirArchivo(evento){
 
         reader.onload = function(e) {
             let contenido = e.target.result;
-            funcionCarga(contenido)
+            funcionCarga(contenido);
         };
 
         reader.readAsText(archivo);
@@ -20,7 +20,7 @@ function abrirArchivo(evento){
         document.getElementById('mensajes').innerText = 'No se ha seleccionado un archivo.';
     }
 }
-let arbolAVL =  new AVL();
+
 function cargarUsuarios(contenido){
     const JSONarchivo = JSON.parse(contenido).vendedores;
     JSONarchivo.forEach(element => {
@@ -39,9 +39,7 @@ function cargarUsuarios(contenido){
         arbolAVL.insertar(element.id, userTemp);
         
     });
-    // localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    
-    //alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
+    alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
 function cargarClientes(contenido) {
@@ -54,8 +52,8 @@ function cargarClientes(contenido) {
         });
         
     });
-    //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    arbolAVL.GetDotFromClient(arbolAVL.raiz, 1);
+    
+    //arbolAVL.GetDotFromClient(arbolAVL.raiz, 1);
     alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
@@ -69,7 +67,6 @@ function Cargaprovedores(contenido) {
         
         
     });
-    //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
     
     alert("Se ha cargado correctamente " + JSONarchivo.length + " Proveedores")
 }
@@ -85,20 +82,15 @@ function cargarEventos(contenido) {
         });
         
     });
-    //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
     
-    console.log(arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, 1, 1));
-    //alert("Se ha cargado correctamente " + JSONarchivo.length + " ")
+    
+    //console.log(arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, 1, 1));
+    alert("Se ha cargado correctamente " + JSONarchivo.length + " ")  
 }
 
-function getArbolAVL(){
-    let temp = JSON.parse(localStorage.getItem('users'));
-    temp = CircularJSON.parse(temp);
-    if (!temp) {
-        temp = new AVL();
-    }
-    return temp;
-}
+
+
+/**            ADMINISTRADOR DE FUNCION DE CARGA DEPENDE DEL BOTON */
 
 funcionCarga = this.cargarUsuarios
 
@@ -114,7 +106,6 @@ function carga(tipo){
             break;
         case "Clientes":
             funcionCarga = cargarClientes
-            console.log("asdadsa");
             break;
         case "Proveedores":
             funcionCarga = Cargaprovedores
