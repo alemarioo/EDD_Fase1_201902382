@@ -22,9 +22,8 @@ class ListaDobleEnlazada{
         let aux = this.inicio;
         while (aux) {
             if (aux.id === mes) {
-                console.log(aux.calendario);
+                console.log(evento);
                 aux.calendario.agregar(evento, evento.dia, evento.hora);
-                console.log(aux.calendario);
             }
             aux  = aux.siguiente;
         }
@@ -41,6 +40,16 @@ class ListaDobleEnlazada{
         }
     }
 
+    getDotFromCalendar(id){
+        let aux = this.inicio;
+        while (aux) {
+            if (aux.id === id) {
+                return aux.calendario.GenerarDot();
+            }
+            aux  = aux.siguiente;
+        }
+    }
+
     generarDot(){
         let aux = this.inicio;
         let relacionales = "";
@@ -52,9 +61,10 @@ class ListaDobleEnlazada{
         `
 
         while (aux) {
+            console.log(aux.calendario);
             template+=`N${aux.id}[label = "Nombre: ${aux.calendario.nombre} Correo: ${aux.calendario.correo} " width = 1.5, group = 1 ];\n`
             if (aux.siguiente) {
-                relacionales+=`N${aux.id} -> N${aux.siguiente.id}`
+                relacionales+=`N${aux.id} -> N${aux.siguiente.id}\n`
             }
             aux  = aux.siguiente;
         }

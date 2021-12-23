@@ -1,7 +1,7 @@
 
 window.addEventListener('load', () => {
     document.getElementById('customFile').addEventListener('change', abrirArchivo);
-    arbolAVL = this.getArbolAVL();
+    arbolAVL = new AVL(); //this.getArbolAVL();
 });
 
 function abrirArchivo(evento){
@@ -20,7 +20,7 @@ function abrirArchivo(evento){
         document.getElementById('mensajes').innerText = 'No se ha seleccionado un archivo.';
     }
 }
-let arbolAVL = null;
+let arbolAVL =  new AVL();
 function cargarUsuarios(contenido){
     const JSONarchivo = JSON.parse(contenido).vendedores;
     JSONarchivo.forEach(element => {
@@ -55,7 +55,7 @@ function cargarClientes(contenido) {
         
     });
     //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    console.log(CircularJSON.stringify(arbolAVL));
+    arbolAVL.GetDotFromClient(arbolAVL.raiz, 1);
     alert("Se ha cargado correctamente " + JSONarchivo.length + " usuarios")
 }
 
@@ -86,7 +86,8 @@ function cargarEventos(contenido) {
         
     });
     //localStorage.setItem("users", CircularJSON.stringify(arbolAVL))
-    console.log(CircularJSON.stringify(arbolAVL));
+    
+    console.log(arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, 1, 1));
     //alert("Se ha cargado correctamente " + JSONarchivo.length + " ")
 }
 

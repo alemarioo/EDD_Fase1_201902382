@@ -114,10 +114,23 @@ class AVL{
             this.addClientesAUser(raiz_actual.izq,id, cliente);
             
             if (id === raiz_actual.dato) {
-                raiz_actual.info.clientes.add(cliente);
+                raiz_actual.info.clientes.add(cliente.id, cliente);
                 console.log(raiz_actual.info.clientes);
             }
             this.addClientesAUser(raiz_actual.der,id, cliente);
+        }
+    }
+
+    GetDotFromClient(raiz_actual, id){
+        if(raiz_actual != null){
+            let res = this.GetDotFromClient(raiz_actual.izq,id);
+            if (res) return res
+            if (id === raiz_actual.dato) {
+                return raiz_actual.info.clientes.generarDot();
+                
+            }
+            res = this.GetDotFromClient(raiz_actual.der,id);
+            return res
         }
     }
 
@@ -130,6 +143,57 @@ class AVL{
             }
             this.addEventoAUser(raiz_actual.der,id,event);
         }
+    }
+
+    GetDotCalendarFromMonth(raiz_actual, id, mes){
+        if(raiz_actual != null){
+            let res = this.GetDotCalendarFromMonth(raiz_actual.izq,id, mes);
+            if (res) return res
+            if (id === raiz_actual.dato) {
+                return raiz_actual.info.calendario.getDotFromCalendar(mes);
+                
+            }
+            res = this.GetDotFromClient(raiz_actual.der,id, mes);
+            return res
+        }
+    }
+
+    generarDot(){
+        let cadena="digraph arbol {\n";
+        cadena+= this.generar_nodos(this.raiz);
+        cadena+="\n";
+        cadena+=this.enlazar(this.raiz);
+        cadena+="\n}";
+
+        console.log(cadena);
+    }
+
+    generar_nodos(raiz_actual){ //metodo preorden
+        let nodos ="";
+        if(raiz_actual != null){
+            nodos+= "n"+raiz_actual.dato+"[label=\""+raiz_actual.dato+"\"]\n";
+            nodos+=this.generar_nodos(raiz_actual.izq);
+            nodos+=this.generar_nodos(raiz_actual.der);
+        }
+        return nodos;
+    }
+
+    enlazar(raiz_actual){
+        let cadena="";
+        if(raiz_actual != null){
+            cadena += this.enlazar(raiz_actual.izq);
+            cadena += this.enlazar(raiz_actual.der);
+            //validaciones
+            if(raiz_actual.izq != null){
+                cadena+="n"+raiz_actual.dato + "-> n"+raiz_actual.izq.dato+"\n";
+            }
+            if(raiz_actual.der != null){
+                cadena+="n"+raiz_actual.dato + "-> n"+raiz_actual.der.dato+"\n";
+            }
+
+            
+        }
+        return cadena;
     }
 }
 

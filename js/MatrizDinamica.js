@@ -8,7 +8,6 @@ class MatrizDinamica {
     agregar(dato, dia, hora) {
         this.getDia(dia);
         this.getHora(hora);
-        console.log(dia + "," + hora);
         let aux = this.HoraAux;
 
         while (aux) {
@@ -256,19 +255,3 @@ class NododATO {
 }
 
 
-const x  = new MatrizDinamica();
-x.agregar(0,3,3);
-x.agregar(0,3,3);
-x.agregar(0,3,1);
-
-x.agregar(0,2,1);
-
-x.agregar(0,2,2);
-
-x.agregar(0,2,4);
-
-x.agregar(0,2,3);
-
-
-console.log(x.toString());
-console.log(x.GenerarDot());
