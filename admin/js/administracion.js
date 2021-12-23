@@ -90,7 +90,7 @@ function generarEventos() {
     }
     const mes = document.getElementById("Mes_selected").value
     
-    const res = arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, 1, 1);
+    const res = arbolAVL.GetDotCalendarFromMonth(arbolAVL.raiz, Iduser, mes);
     console.log(res);
     myDiagram.model = new go.GraphLinksModel(
         res.elementos,
