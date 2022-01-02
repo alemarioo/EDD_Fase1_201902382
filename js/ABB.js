@@ -17,12 +17,17 @@ class ABB{
         return this.raiz === null
     }
 
+    // ingresa la raiz actual y el nuevo
     add(actual,nuevo){
+        //verificar si la raiz actual esta vacia
         if(actual != null){
+            //verifica si el id del nuevo es mayor al ID
             if(actual.id > nuevo.id){
+                // se agrega pero a la raiz izquierda
                 actual.izquierdo = this.add(actual.izquierdo,nuevo);
-
+            //verifica si el id del nuevo es menor al ID
             }else if(actual.id < nuevo.id){
+                // se agrega pero a la raiz derecha
                 actual.derecho = this.add(actual.derecho,nuevo);
             }
 
