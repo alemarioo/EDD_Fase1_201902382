@@ -97,7 +97,10 @@ function carga(tipo){
     document.getElementById("P").className = tipo === "Proveedores"? "btn btn-success": "btn btn-secondary";
     document.getElementById("E").className = tipo === "Eventos"? "btn btn-success": "btn btn-secondary";
     document.getElementById("C").className = tipo === "Clientes"? "btn btn-success": "btn btn-secondary";
-
+    document.getElementById("VE").className = tipo === "Ventas"? "btn btn-success": "btn btn-secondary";
+    document.getElementById("RU").className = tipo === "Rutas"? "btn btn-success": "btn btn-secondary";
+    document.getElementById("IN").className = tipo === "Inventario"? "btn btn-success": "btn btn-secondary";
+    
     switch (tipo) {
         case "Vendedores":
             funcionCarga = cargarUsuarios

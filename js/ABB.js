@@ -3,12 +3,17 @@ class ABB{
         this.raiz = null;
     }
 
+    //agrega la info
     addInfo(valor, info){
+        // se crea el nodo
         let nuevo = new nodoABB(valor, info);
 
-        if(this.vacio()){
+        //verifca si esta vacio
+        if(this.vacio()){   
+            //si lo esta la raiz es el nuev
             this.raiz= nuevo;
         }else{
+            // de lo contrario lo agrgamos a la raiz actual
             this.raiz = this.add(this.raiz,nuevo);
         }
     }
@@ -37,16 +42,7 @@ class ABB{
             return actual;
         }
     }
-
-
-    inOrden(actual){
-        if(actual != null){
-            this.inOrden(actual.izquierdo);
-            console.log(actual.id);
-            this.inOrden(actual.derecho);
-        }
-    }
-
+    //genero el array para generar en la libreria de graficacion
     generarTreeGojs(){
         const x = this.generarHojas(this.raiz, null);
         return x
