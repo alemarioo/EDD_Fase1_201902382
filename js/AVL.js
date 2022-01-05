@@ -1,7 +1,10 @@
+
+
 class AVL{
     
     constructor(){
         this.raiz = null;
+        this.llave = null
     }
 
     insertar(valor, info){
@@ -176,14 +179,15 @@ class AVL{
         const x = this.generarHojas(this.raiz, null);
         return x
     }
-
+    
     //* Genera las hojas para la visualizacion del arbol AVL
     generarHojas(raiz_actual, arriba){ //metodo preorden
         let todo = []
         let nodos ={};
         if(raiz_actual != null){
             nodos.key = raiz_actual.dato;
-            nodos.name = "id: "+raiz_actual.dato + "\nnombre: " + raiz_actual.info.nombre + "\nCorreo:" +raiz_actual.info.correo;
+            nodos.name = "id: "+raiz_actual.dato + "\nnombre: " + raiz_actual.info.nombre + "\nCorreo:" +this.generarEncriptado(raiz_actual.info.correo) + "\n password:" +this.generarEncriptado(raiz_actual.info.password) +
+             "\n username:" +this.generarEncriptado(raiz_actual.info.username);
             if (arriba) {
                 nodos.parent = arriba;    
             }
@@ -194,6 +198,14 @@ class AVL{
             todo = todo.concat(this.generarHojas(raiz_actual.der, raiz_actual.dato));
         }
         return todo;
+    }
+
+    generarEncriptado(texto){
+        if (this.llave) {
+            return sha256(texto+this.llave)
+        }else{
+            return texto
+        }
     }
 }
 

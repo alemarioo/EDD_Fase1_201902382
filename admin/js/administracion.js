@@ -155,45 +155,59 @@ function MostrarContendorProveedor() {
     triggerProveedor.className  = "btn btn-success";
 }
 
-
-
-let lista = document.getElementById("lista");
-
-function middleWareCargar() {
-    lista.innerHTML = "";
-    CargarDatosUsuarios(arbolAVL.raiz);
+function CargarVentas(){
+    
+  console.log(tabla.generarDot());
 }
-
-function CargarDatosUsuarios(raiz) {
-
-    if (!raiz) {
+let vendedor = 3;
+function CargarVentasXvendedor(){
+    const Iduser = +document.getElementById("input_id").value;
+    if (!Iduser) {
+        alert("El numero debe ser valido");
         return
     }
-
-    CargarDatosUsuarios(raiz.izq);
-    
-    
-    const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-start";
-    const div = document.createElement("div");
-    div.className = "ms-2 me-auto";
-    const divNegrita = document.createElement("div");
-    divNegrita.className = "fw-bold";
-    div.appendChild(divNegrita);
-    const textNode = document.createTextNode(raiz.info.correo);
-    const cerrar = document.createElement("span");
-    cerrar.dataset = "adad";
-    cerrar.className = "badge bg-primary rounded-pill"
-    cerrar.textContent = "X";
-    cerrar.onclick = function a() {
-        //** FUNCION ELIMINAR AQUI */
-        console.log("xxx");
-    }
-    divNegrita.textContent = raiz.info.nombre;
-    div.appendChild(textNode);
-    li.appendChild(div);
-    lista.appendChild(li);
-    li.appendChild(cerrar);
-
-    CargarDatosUsuarios(raiz.der);
+    console.log(tabla.generarDotVendedor(Iduser));
 }
+
+
+
+// let lista = document.getElementById("lista");
+
+// function middleWareCargar() {
+//     lista.innerHTML = "";
+//     CargarDatosUsuarios(arbolAVL.raiz);
+// }
+
+// function CargarDatosUsuarios(raiz) {
+
+//     if (!raiz) {
+//         return
+//     }
+
+//     CargarDatosUsuarios(raiz.izq);
+    
+    
+//     const li = document.createElement("li");
+//     li.className = "list-group-item d-flex justify-content-between align-items-start";
+//     const div = document.createElement("div");
+//     div.className = "ms-2 me-auto";
+//     const divNegrita = document.createElement("div");
+//     divNegrita.className = "fw-bold";
+//     div.appendChild(divNegrita);
+//     const textNode = document.createTextNode(raiz.info.correo);
+//     const cerrar = document.createElement("span");
+//     cerrar.dataset = "adad";
+//     cerrar.className = "badge bg-primary rounded-pill"
+//     cerrar.textContent = "X";
+//     cerrar.onclick = function a() {
+//         //** FUNCION ELIMINAR AQUI */
+//         console.log("xxx");
+//     }
+//     divNegrita.textContent = raiz.info.nombre;
+//     div.appendChild(textNode);
+//     li.appendChild(div);
+//     lista.appendChild(li);
+//     li.appendChild(cerrar);
+
+//     CargarDatosUsuarios(raiz.der);
+// }
