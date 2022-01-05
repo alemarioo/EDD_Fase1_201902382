@@ -38,7 +38,7 @@
             </div>
             <div class="row mt-1">
                 <button id="btn_admin" class="btn btn-white btn-lg" onclick="Panel(this, 'PanelAdminCuentas')"><i
-                        class="fas fa-users"></i> Administracion de cuentas</button>
+                        class="fas fa-users"></i> BlockChain</button>
             </div>
             <div class="row mt-5">
                 <a href="../index.html" class="btn btn-white btn-lg"><i class="fas fa-sign-out-alt"></i> Cerra
@@ -59,6 +59,12 @@
                                     onclick="carga('Eventos')">eventos</button>
                                 <button type="button" id="C" class="btn btn-secondary"
                                     onclick="carga('Clientes')">Clientes</button>
+                                    <button type="button" id="VE" class="btn btn-secondary"
+                                    onclick="carga('Ventas')">Ventas</button>
+                                <button type="button" id="RU" class="btn btn-secondary"
+                                    onclick="carga('Rutas')">Rutas</button>
+                                <button type="button" id="IN" class="btn btn-secondary"
+                                    onclick="carga('Inventario')">Inventario</button>
                             </div>
                         </div>
                     </div>
@@ -76,151 +82,15 @@
                 </div>
             </div>
             <div class="row" id="PanelAdminCuentas" style="display: none;">
-                <div class="row mx-2">
-                    <div class="col text-center bg my-3">
-                        <h1>Administracion de cuentas</h1> <br>
-                        <div class="col d-flex justify-content-center">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary" id="triggerCrear"
-                                    onclick="MostrarContendorCrear()">Crear</button>
-                                <button type="button" class="btn btn-danger" id="triggerEliminar"
-                                    onclick="MostrarContendorEliminar()">Eliminar</button>
-                            </div>
-                        </div> <br>
-                        <div class="col d-flex justify-content-center">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-success" id="triggerUsuario"
-                                    onclick="MostrarContendorUsuario()">Usuario</button>
-                                <button type="button" class="btn btn-secondary" id="triggerProveedor"
-                                    onclick="MostrarContendorProveedor()">Proveedor</button>
-                            </div>
-                        </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary" onclick="CrearBloque()">Crear Bloque con la informacion que hay</button>
                     </div>
                 </div>
-                <div id="contenedor_crear">
-                    <div id="cont_user">
-                        <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6 text-center">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Correo</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="email" class="form-control" placeholder="ej: alemario@alemario.com"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Edad</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="email" class="form-control" placeholder="ej: 5"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Usuario</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="ej: Alemario"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-key my-1"></i></span>
-                                        </div>
-                                        <input type="password" class="form-control" placeholder="Contraseña"
-                                            aria-label="password" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="text-center py-3">
-                                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                                </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                    </div>
-                    <div id="cont_prove" style="display:none;">
-                        <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6 text-center">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombre</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="ej: Mario Alexander"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Direccion</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="ej: Zona 5 UwU"
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Telefono</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-space-shuttle my-1"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="ej: 1234578"
-                                            aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Correo</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-white" id="basic-addon1"><i
-                                                    class="fas fa-key my-1"></i></span>
-                                        </div>
-                                        <input type="email" class="form-control" placeholder="Correo"
-                                            aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="text-center py-3">
-                                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                                </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div id="contendor_eliminar" style="display:none;">
-                    <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col text-center">
-                            <ol class="list-group list-group-numbered" id="lista">
-
-                            </ol>
-                        </div>
-                        <div class="col-lg-3"></div>
-
-                    </div>
+                <br><br><br>
+                <div class="row">
+                    <ol class="list-group list-group-numbered" id="lista">
+                    </ol>
                 </div>
             </div>
             <div id="PanelReportes" style="display: none;">
@@ -232,6 +102,9 @@
                                 <button type="button" class="btn btn-secondary" onclick="generarProveedores()">Proveedores</button>
                                 <button type="button" class="btn btn-secondary" onclick="MostrarMesUser()">eventos</button>
                                 <button type="button" class="btn btn-secondary" onclick="MostrarClienteUser()">Clientes</button>
+                                <button type="button" class="btn btn-secondary" onclick="GenerarReporteInventario()">Inventario</button>
+                                <button type="button" class="btn btn-secondary" onclick="CargarVentas()">Ventas</button>
+                                <button type="button" class="btn btn-secondary" onclick="MostrarId()">Ventas x Vendedor</button>
                             </div>
                         </div>
                     </div>
@@ -269,8 +142,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div id="myDiagramDiv"
-     style=" height:500px; background-color: #DAE4E4;"></div>
+                    <div id="myDiagramDiv" style=" height:500px; background-color: #DAE4E4;"></div>
                 </div>
             </div>
         </div>
@@ -284,7 +156,10 @@
     <script src="./js/administracion.js"></script>
     <script src="./js/Mostrar.js"></script>
     <script src="../graficar/go.js"></script>
-    
+    <script src="../js/Listasimple.js"></script>
+    <script src="../js/tablaHash.js"></script>
+    <script src="../js/BlockChain.js"></script>
+    <script src="../js/ArbolB.js"></script>
 </body>
 <!--Cambio release xd-->
 </html>
