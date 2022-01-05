@@ -1,8 +1,9 @@
 //************************ Ejemplo Arbol B de orden 5 **************************/
 /*********************** Nodo Arbol B *************************/
 class nodoB{
-    constructor(dato){
+    constructor(dato, info){
         this.dato = dato;
+        this.info = info;
         //apuntadores de lista - tipo nodoB
         this.siguiente = null; 
         this.anterior = null;
@@ -180,8 +181,8 @@ class Arbol_B{
         this.altura =0;
     }
 
-    insertar_nodo(dato){
-        let nuevo = new nodoB(dato);
+    insertar_nodo(dato, info){
+        let nuevo = new nodoB(dato, info);
         
         if(this.raiz == null){
             this.raiz = new pagina();
@@ -261,9 +262,9 @@ class Arbol_B{
     }
 
     graficar(){
-        let cadena="digraph arbolB{\n";
+        let cadena="digraph grafica{\n";
         cadena+="rankr=TB;\n";
-        cadena+="node[shape = box,fillcolor=\"azure2\" color=\"black\" style=\"filled\"];\n";
+        cadena+="node[shape = box,fillcolor=\"#35858B\" color=\"black\" style=\"filled\"];\n";
         //metodos para graficar el arbol
         cadena+= this.graficar_nodos(this.raiz);
         cadena+=  this.graficar_enlaces(this.raiz);
@@ -281,7 +282,7 @@ class Arbol_B{
             let aux = raiz_actual.claves.primero;
             while(aux!=null){
                 contador++;
-                cadena+="|{"+aux.dato+"}|<p"+contador+"> ";
+                cadena+="|{"+aux.dato + `\\n - ${aux.info.nombre} - \\n - Q${aux.info.precio} - \\n  - Cantidad: ${aux.info.cantidad} -` +"}|<p"+contador+"> ";
                 aux= aux.siguiente;
             }
             cadena+="\"]"+raiz_actual.claves.primero.dato+";\n";
@@ -292,7 +293,7 @@ class Arbol_B{
             let aux = raiz_actual.claves.primero;
             while(aux!=null){
                 contador++;
-                cadena+="|{"+aux.dato+"}|<p"+contador+"> ";
+                cadena+="|{"+aux.dato+ `\\n - ${aux.info.nombre} - \\n - Q${aux.info.precio} -  \\n - Cantidad ${aux.info.cantidad} -`+"}|<p"+contador+"> ";
                 aux= aux.siguiente;
             }
             cadena+="\"]"+raiz_actual.claves.primero.dato+";\n";
@@ -329,26 +330,3 @@ class Arbol_B{
     }
 }
 /************************************************************ */
-
-let arbol = new Arbol_B();
-arbol.insertar_nodo(5);
-arbol.insertar_nodo(1);
-arbol.insertar_nodo(7);
-arbol.insertar_nodo(3);
-arbol.insertar_nodo(13);
-arbol.insertar_nodo(8);
-arbol.insertar_nodo(35);
-arbol.insertar_nodo(14);
-arbol.insertar_nodo(10);
-arbol.insertar_nodo(9);
-arbol.insertar_nodo(12);
-arbol.insertar_nodo(17);
-arbol.insertar_nodo(22);
-arbol.insertar_nodo(25);
-
-arbol.insertar_nodo(100);
-arbol.insertar_nodo(150);
-arbol.insertar_nodo(220);
-arbol.insertar_nodo(325);
-
-console.log(arbol.graficar());

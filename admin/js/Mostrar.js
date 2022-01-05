@@ -36,3 +36,9 @@ function MostrarClienteUser() {
     funcionARealizar = generarClientes
 }
 
+function MostrarId() {
+    document.getElementById("text_User").style = "";
+    document.getElementById("btn_graficar").style = "";
+    document.getElementById("text_Mes").style = "display:none;";
+    funcionARealizar = CargarVentasXvendedor
+}
